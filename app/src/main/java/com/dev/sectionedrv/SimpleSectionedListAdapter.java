@@ -45,10 +45,9 @@ public abstract class SimpleSectionedListAdapter<VH extends RecyclerView.ViewHol
         int headerKey = 0;
         for (int i = 0; i < mHeaderMap.size(); i++) {
             int key = mHeaderMap.keyAt(i);
-            if (position > key)
-                headerKey = key;
-            else
+            if (position < key)
                 break;
+            headerKey = key;
         }
         return mHeaderMap.get(headerKey);
     }

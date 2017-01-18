@@ -30,8 +30,17 @@
             android:id="@+id/tv_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_toStartOf="@+id/add_delete_item_layout"
             android:layout_centerInParent="true" />
+
+        <include
+            android:id="@+id/add_delete_item_layout"
+            layout="@layout/plus_minus_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"/>
 
     </RelativeLayout>
 

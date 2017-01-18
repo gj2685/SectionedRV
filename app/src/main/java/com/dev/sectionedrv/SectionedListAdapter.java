@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -66,12 +67,18 @@ public class SectionedListAdapter extends SimpleSectionedListAdapter<RecyclerVie
         ImageView ivUser;
         TextView tvName;
         TextView tvAge;
+        TextView tvCount;
+        ImageButton btnPlus;
+        ImageButton btnMinus;
 
         ItemViewHolder(View itemView) {
             super(itemView);
             ivUser = (ImageView) itemView.findViewById(R.id.iv_user);
             tvName = (TextView) itemView.findViewById(R.id.tv_name);
             tvAge = (TextView) itemView.findViewById(R.id.tv_age);
+            tvCount = (TextView) itemView.findViewById(R.id.tv_item_count);
+            btnPlus = (ImageButton) itemView.findViewById(R.id.btn_plus);
+            btnMinus = (ImageButton) itemView.findViewById(R.id.btn_minus);
         }
 
         void bind(int headerIndex, int position) {
@@ -84,6 +91,22 @@ public class SectionedListAdapter extends SimpleSectionedListAdapter<RecyclerVie
             ivUser.setImageResource(R.drawable.no_image);
             tvName.setText(name);
             tvAge.setText(String.valueOf(age));
+            tvCount.setText(tvCount.getText());
+
+            btnPlus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int count = Integer.parseInt(tvCount.getText().toString());
+                    tvCount.setText(String.valueOf(count + 1));
+                }
+            });
+            btnMinus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int count = Integer.parseInt(tvCount.getText().toString());
+                    tvCount.setText(String.valueOf(count - 1));
+                }
+            });
         }
     }
 }
